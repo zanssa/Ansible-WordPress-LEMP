@@ -38,14 +38,12 @@
 - name: Create MySQL Database
   mysql_db:
     login_user: "{{ mysql_user }}"
-    login_password: "{{ wp_mysql_password }}"
     name: "{{ wp_mysql_db }}"
     state: present
 
 - name: Create MySQL User 
   mysql_user:
     login_user: "{{ mysql_user }}"
-    login_password: "{{ wp_mysql_password }}"
     name: "{{ wp_mysql_user }}"
     password: "{{ wp_mysql_password }}"
     host: '%'
