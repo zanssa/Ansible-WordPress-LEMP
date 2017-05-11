@@ -1,0 +1,34 @@
+---
+# This playbook contains a common play that will be executed on all remote servers
+
+- name: Update Apt Cache on all Remote Servers
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+  register: apt_result
+  until: apt_result|success
+  retries: 3
+  delay: 1
+  become: yes
+  ignore_errors: yes
+
+- name: Retry updating apt cache if needed using command apt-get update
+  command: apt-get update
+  become: yes
+  when: apt_result|failed    
+
+- name: Install NTP service.
+  apt:
+    name: ntp
+    state: latest
+  tags:
+    - ntp
+
+- name: Ensure NTP is running.
+  service:
+    name: ntp
+    state: started
+    enabled: yes
+  tags:
+    - ntp
+...
