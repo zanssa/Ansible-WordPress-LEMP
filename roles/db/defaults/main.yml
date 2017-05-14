@@ -5,4 +5,3 @@ mysql_user: root
 wp_mysql_db: wordpress
 wp_mysql_user: wpadmin
 wp_mysql_password: wpadmin
-wp_mysql_host: ubuntu
