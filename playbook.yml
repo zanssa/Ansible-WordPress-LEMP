@@ -1,5 +1,5 @@
 ---
-# This playbook deplies WordPress on LEMP Stack on remote Servers
+# This playbook deploys WordPress on LEMP Stack on remote Servers
 
  - name: Configure WordPress on LEMP Stack 
    hosts: all
